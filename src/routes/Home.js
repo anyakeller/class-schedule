@@ -11,11 +11,33 @@ function Header(props) {
 }
 
 function DayTimeBlock(props) {
+  // console.log(props.sectionData.logistics);
+  const startAmPm = props.sectionData.logistics.start.slice(-2);
+  // begin count 7am, if pm add 12-7 = 5 hrs
+  // start time
+  const [startHrsStr, startMinutesStr] = props.sectionData.logistics.start
+    .slice(0, -2)
+    .split(":");
+  const startHrs =
+    startAmPm === "am" ? parseInt(startHrsStr) - 7 : parseInt(startHrsStr) + 5;
+  const startMinutes = parseInt(startMinutesStr);
+  const startTimeBlocks = (startHrs * 60 + startMinutes) / 5;
+  // stop time
+  const stopAmPm = props.sectionData.logistics.stop.slice(-2);
+  const [stopHrsStr, stopMinutesStr] = props.sectionData.logistics.stop
+    .slice(0, -2)
+    .split(":");
+  const stopHrs =
+    stopAmPm === "am" ? parseInt(stopHrsStr) - 7 : parseInt(stopHrsStr) + 5;
+  const stopMinutes = parseInt(stopMinutesStr);
+  const stopTimeBlocks = (stopHrs * 60 + stopMinutes) / 5;
+  const blockHeightPercent = (100 * (stopTimeBlocks - startTimeBlocks)) / 180;
+
   return (
     <div
       style={{
         width: "100%",
-        height: `${(100 * props.blocksHeight) / 180}%`,
+        height: `${blockHeightPercent}%`,
         top: `${5}%`,
         position: "absolute"
       }}
@@ -24,11 +46,10 @@ function DayTimeBlock(props) {
 }
 
 function DayCol(props) {
-  const fiveMinBlocks = 180;
   const timeBlocks = [];
   timeBlocks.push(
     props.dayData.map((section, sectionIndex) => {
-      return <DayTimeBlock blocksHeight={5} sectionData={section} key={sectionIndex} />;
+      return <DayTimeBlock sectionData={section} key={sectionIndex} />;
     })
   );
   return timeBlocks;
@@ -129,7 +150,7 @@ function ScheduleGrid(props) {
             building: "PHO",
             room: "203",
             start: "10:10am",
-            stop: "11:55am	",
+            stop: "11:55am",
             days: ["Mon", "Wed"]
           }
         },
