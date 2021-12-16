@@ -14,13 +14,18 @@ function DayTimeBlock(props) {
   return (
     <div
       style={{ height: `${(100 * props.blocksHeight) / 180}%` }}
-      className="border border-success"></div>
+      className="bg-success"></div>
   );
 }
 
 function DayCol(props) {
   const fiveMinBlocks = 180;
-  return <DayTimeBlock blocksHeight={fiveMinBlocks} />;
+  const timeBlocks = props.dayData.map((section, sectionIndex) => {
+    console.log(section);
+    return <DayTimeBlock blocksHeight={5} key={sectionIndex}/>;
+  });
+  timeBlocks.push(<DayTimeBlock blocksHeight={0} key={-1}/>);
+  return timeBlocks;
 }
 
 function DayCols(props) {
@@ -31,7 +36,7 @@ function DayCols(props) {
           <h5 style={{ height: "1.5em" }}>{day}</h5>
           <div style={{ flexGrow: "1" }}>
             <DayCol
-              dayData={day in props.coursesInDay ? props.coursesInDay[day] : {}}
+              dayData={day in props.coursesInDay ? props.coursesInDay[day] : []}
             />
           </div>
         </div>
