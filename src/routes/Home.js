@@ -119,8 +119,23 @@ function ScheduleGrid(props) {
       ]
     }
   };
+  let coursesInDay = {
+    Sun: [],
+    Mon: [],
+    Tues: [],
+    Wed: [],
+    Thr: [],
+    Fri: [],
+    Sat: []
+  };
+  for (const course in courses) {
+    console.log({
+      courseName: course,
+      ...courses[course]
+    });
+  }
   return (
-    <div className="container">
+    <div className="container" style={{ height: "500px" }}>
       <DayCols dayNames={dayNames} />
     </div>
   );
