@@ -128,12 +128,28 @@ function ScheduleGrid(props) {
     Fri: [],
     Sat: []
   };
-  for (const course in courses) {
-    console.log({
-      courseName: course,
-      ...courses[course]
-    });
+
+  // put sections in coursesInDay
+  for (const courseName in courses) {
+    const courseData = { courseName: courseName, ...courses[courseName] };
+    // console.log(courseData);
+    // for each section iterate through section time
+    for (const sectionIndex in courseData["sections"]) {
+      const sectionData = courseData["sections"][sectionIndex];
+      for (const sectionDayIndex in sectionData["logistics"]["days"]) {
+        const sectionday = sectionData["logistics"]["days"][sectionDayIndex];
+        // make sure it doesn't say "Arr" because "Arr" isn't a day
+        if (sectionday in coursesInDay) {
+          coursesInDay[sectionday].push({
+            code: courseData["code"],
+            courseName: courseData["courseName"],
+            ...sectionData
+          });
+        }
+      }
+    }
   }
+  console.log(coursesInDay);
   return (
     <div className="container" style={{ height: "500px" }}>
       <DayCols dayNames={dayNames} />
