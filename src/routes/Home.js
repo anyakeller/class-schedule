@@ -13,8 +13,12 @@ function Header(props) {
 function DayTimeBlock(props) {
   return (
     <div
-      style={{ height: `${(100 * props.blocksHeight) / 180}%` }}
-      className="bg-success"></div>
+      style={
+        props.blocksHeight === 0
+          ? { flexGrow: "1" }
+          : { height: `${(100 * props.blocksHeight) / 180}%` }
+      }
+      className={props.blocksHeight === 0 ? "bg-warning" : "bg-primary"}></div>
   );
 }
 
@@ -22,9 +26,9 @@ function DayCol(props) {
   const fiveMinBlocks = 180;
   const timeBlocks = props.dayData.map((section, sectionIndex) => {
     console.log(section);
-    return <DayTimeBlock blocksHeight={5} key={sectionIndex}/>;
+    return <DayTimeBlock blocksHeight={5} key={sectionIndex} />;
   });
-  timeBlocks.push(<DayTimeBlock blocksHeight={0} key={-1}/>);
+  timeBlocks.push(<DayTimeBlock blocksHeight={0} key={-1} />);
   return timeBlocks;
 }
 
@@ -34,7 +38,7 @@ function DayCols(props) {
       {[""].concat(props.dayNames).map((day, index) => (
         <div className="col d-flex flex-column" key={index}>
           <h5 style={{ height: "1.5em" }}>{day}</h5>
-          <div style={{ flexGrow: "1" }}>
+          <div className="d-flex flex-column" style={{ flexGrow: "1" }}>
             <DayCol
               dayData={day in props.coursesInDay ? props.coursesInDay[day] : []}
             />
