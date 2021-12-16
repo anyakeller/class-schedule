@@ -13,20 +13,26 @@ function Header(props) {
 function DayTimeBlock(props) {
   return (
     <div
-      style={{ height: `${100* props.blocksHeight / 180}%` }}
+      style={{ height: `${(100 * props.blocksHeight) / 180}%` }}
       className="border border-success"></div>
   );
 }
 
-function DayCols(props) {
+function DayCol(props) {
   const fiveMinBlocks = 180;
+  return <DayTimeBlock blocksHeight={fiveMinBlocks} />;
+}
+
+function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%" }}>
       {[""].concat(props.dayNames).map((day, index) => (
         <div className="col d-flex flex-column" key={index}>
           <h5 style={{ height: "1.5em" }}>{day}</h5>
-          <div style={{ "flex-grow": "1" }}>
-            <DayTimeBlock blocksHeight={fiveMinBlocks} />
+          <div style={{ flexGrow: "1" }}>
+            <DayCol
+              dayData={day in props.coursesInDay ? props.coursesInDay[day] : {}}
+            />
           </div>
         </div>
       ))}
@@ -164,7 +170,7 @@ function ScheduleGrid(props) {
 
   return (
     <div className="container" style={{ height: "500px" }}>
-      <DayCols dayNames={dayNames} />
+      <DayCols dayNames={dayNames} coursesInDay={coursesInDay} />
     </div>
   );
 }
