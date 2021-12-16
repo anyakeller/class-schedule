@@ -10,12 +10,24 @@ function Header(props) {
   );
 }
 
-function DayCols(props) {
+function DayTimeBlock(props) {
   return (
-    <div className="row">
+    <div
+      style={{ height: `${100* props.blocksHeight / 180}%` }}
+      className="border border-success"></div>
+  );
+}
+
+function DayCols(props) {
+  const fiveMinBlocks = 180;
+  return (
+    <div className="row" style={{ height: "100%" }}>
       {[""].concat(props.dayNames).map((day, index) => (
-        <div className="col" key={index}>
-          <h5>{day}</h5>
+        <div className="col d-flex flex-column" key={index}>
+          <h5 style={{ height: "1.5em" }}>{day}</h5>
+          <div style={{ "flex-grow": "1" }}>
+            <DayTimeBlock blocksHeight={fiveMinBlocks} />
+          </div>
         </div>
       ))}
     </div>
@@ -23,9 +35,8 @@ function DayCols(props) {
 }
 
 function ScheduleGrid(props) {
-  let dayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
-  let fiveMinBlocks = 180;
-  let courses = {
+  const dayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
+  const courses = {
     "Emerg Mod Europ": {
       code: "CAS HI102",
       crHrs: 4,
@@ -119,7 +130,8 @@ function ScheduleGrid(props) {
       ]
     }
   };
-  let coursesInDay = {
+
+  const coursesInDay = {
     Sun: [],
     Mon: [],
     Tues: [],
@@ -149,7 +161,7 @@ function ScheduleGrid(props) {
       }
     }
   }
-  console.log(coursesInDay);
+
   return (
     <div className="container" style={{ height: "500px" }}>
       <DayCols dayNames={dayNames} />
