@@ -9,43 +9,25 @@ function Header(props) {
     </header>
   );
 }
-function DayTh(props) {
-  return <th scope="col">{props.dayName}</th>;
-}
 
-function DayHeader(props) {
+function DayCols(props) {
   return (
-    <thead>
-      <tr>
-        {[""].concat(props.dayNames).map((day, index) => (
-          <DayTh key={index} dayName={day} />
-        ))}
-      </tr>
-    </thead>
+    <div className="row">
+      {[""].concat(props.dayNames).map((day, index) => (
+        <div className="col" key={index}>
+          <h3>{day}</h3>
+        </div>
+      ))}
+    </div>
   );
 }
 
-function HourRow(props) {
-  var hourColTd = [<th scope="row" key={props.hour}>{props.hour}</th>];
-  hourColTd.push(props.dayNames.map((day, index) => <td key={index}>a</td>));
-  return <tr>{hourColTd}</tr>;
-}
-
-function ScheduleTableBody(props) {
-  let hourRows = [];
-  for (let i = 0; i < 15; i++) {
-    hourRows.push(<HourRow key={i} hour={i} dayNames={props.dayNames} />);
-  }
-  return <tbody>{hourRows}</tbody>;
-}
-
-function ScheduleTable(props) {
+function ScheduleGrid(props) {
   var dayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
   return (
-    <table className="table table-hover">
-      <DayHeader dayNames={dayNames} />
-      <ScheduleTableBody dayNames={dayNames} />
-    </table>
+    <div className="container">
+      <DayCols dayNames={dayNames} />
+    </div>
   );
 }
 
@@ -56,7 +38,7 @@ function Home(props) {
       <div
         className="border border-info rounded-3 mx-1 my-4 px-1 py-4"
         style={{}}>
-        <ScheduleTable />
+        <ScheduleGrid />
       </div>
       <div
         className="border border-info rounded-3 mx-1 my-4 px-1 py-4"
