@@ -31,6 +31,8 @@ function DayTimeBlock(props) {
     stopAmPm === "am" ? parseInt(stopHrsStr) - 7 : parseInt(stopHrsStr) + 5;
   const stopMinutes = parseInt(stopMinutesStr);
   const stopTimeBlocks = (stopHrs * 60 + stopMinutes) / 5;
+
+  const blockTopPercent = (100 * stopTimeBlocks) / 180;
   const blockHeightPercent = (100 * (stopTimeBlocks - startTimeBlocks)) / 180;
 
   return (
@@ -38,7 +40,7 @@ function DayTimeBlock(props) {
       style={{
         width: "100%",
         height: `${blockHeightPercent}%`,
-        top: `${5}%`,
+        top: `${blockTopPercent}%`,
         position: "absolute"
       }}
       className={"bg-primary"}></div>
