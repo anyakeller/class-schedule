@@ -101,8 +101,11 @@ const courses = {
         }
       }
     ]
-  },
-  "Block test":{
+  }
+};
+
+/* 
+"debugging course":{
     code: "na",
     crHrs: 4,
     instructor: "na",
@@ -153,7 +156,7 @@ const courses = {
       },
     ]
   }
-};
+*/
 
 // put sections in coursesInDay
 for (const courseName in courses) {
