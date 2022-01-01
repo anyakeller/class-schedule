@@ -101,6 +101,57 @@ const courses = {
         }
       }
     ]
+  },
+  "Block test":{
+    code: "na",
+    crHrs: 4,
+    instructor: "na",
+    sections: [
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "7:00am",
+          stop: "8:00am",
+          days: ["Sun"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "9:00am",
+          stop: "10:00am",
+          days: ["Sun"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "11:00am",
+          stop: "12:00pm",
+          days: ["Sun"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "1:00pm",
+          stop: "2:00pm",
+          days: ["Sun"]
+        }
+      },
+    ]
   }
 };
 

@@ -1,5 +1,7 @@
 import React from "react";
-import { dayNames, coursesInDay, courses } from "../utils/Schedule.js";
+import { dayNames, coursesInDay } from "../utils/Schedule.js";
+import { convertTime } from "../utils/TimeHandling.js";
+const { Interval } = require("luxon");
 
 function Header(props) {
   return (
@@ -11,29 +13,17 @@ function Header(props) {
 }
 
 function DayTimeBlock(props) {
-  // console.log(props.sectionData.logistics);
-  const startAmPm = props.sectionData.logistics.start.slice(-2);
-  // begin count 7am, if pm add 12-7 = 5 hrs
-  // start time
-  const [startHrsStr, startMinutesStr] = props.sectionData.logistics.start
-    .slice(0, -2)
-    .split(":");
-  const startHrs =
-    startAmPm === "am" ? parseInt(startHrsStr) - 7 : parseInt(startHrsStr) + 5;
-  const startMinutes = parseInt(startMinutesStr);
-  const startTimeBlocks = (startHrs * 60 + startMinutes) / 5;
-  // stop time
-  const stopAmPm = props.sectionData.logistics.stop.slice(-2);
-  const [stopHrsStr, stopMinutesStr] = props.sectionData.logistics.stop
-    .slice(0, -2)
-    .split(":");
-  const stopHrs =
-    stopAmPm === "am" ? parseInt(stopHrsStr) - 7 : parseInt(stopHrsStr) + 5;
-  const stopMinutes = parseInt(stopMinutesStr);
-  const stopTimeBlocks = (stopHrs * 60 + stopMinutes) / 5;
+  const startTime = convertTime(props.sectionData.logistics.start);
+  const stopTime = convertTime(props.sectionData.logistics.stop);
+  const dayStart = startTime.startOf("day").plus({ hours: 7 });
+  var timeInterval = Interval.fromDateTimes(startTime, stopTime);
 
-  const blockTopPercent = (100 * stopTimeBlocks) / 180;
-  const blockHeightPercent = (100 * (stopTimeBlocks - startTimeBlocks)) / 180;
+  // how many minutes from 7 am 
+  var sevenToStartTime = startTime.diff(dayStart, "minutes").as("minutes");
+  var minutesLong = stopTime.diff(startTime, "minutes").as("minutes");
+
+  const blockTopPercent = (100 * sevenToStartTime) / 5 / 180;
+  const blockHeightPercent = (100 * minutesLong) / 5 / 180;
 
   return (
     <div
@@ -92,7 +82,7 @@ function Home(props) {
         <ScheduleGrid />
       </div>
       <div
-        className="border border-info rounded-3 mx-1 my-4 px-1 py-4"
+        className="table-responsive-lg border border-info rounded-3 mx-1 my-4 px-1 py-4 "
         style={{}}>
         <table className="table table-hover">
           <thead>
