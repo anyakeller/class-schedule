@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/class-schedule/static/css/main.1a8a0596.css",
-    "main.js": "/class-schedule/static/js/main.b610b685.js",
-    "static/media/fiorDiLatte.png": "/class-schedule/static/media/fiorDiLatte.9f2b5de5199a004bab2e.png",
+    "main.js": "/class-schedule/static/js/main.445a56a4.js",
     "index.html": "/class-schedule/index.html",
     "main.1a8a0596.css.map": "/class-schedule/static/css/main.1a8a0596.css.map",
-    "main.b610b685.js.map": "/class-schedule/static/js/main.b610b685.js.map"
+    "main.445a56a4.js.map": "/class-schedule/static/js/main.445a56a4.js.map"
   },
   "entrypoints": [
     "static/css/main.1a8a0596.css",
-    "static/js/main.b610b685.js"
+    "static/js/main.445a56a4.js"
   ]
 }
