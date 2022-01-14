@@ -1,5 +1,5 @@
 import React from "react";
-import { dayNames, coursesInDay } from "../utils/Schedule.js";
+import { dayNames as DayNames, coursesInDay as CoursesInDay } from "../utils/Schedule.js";
 import { convertTime } from "../utils/TimeHandling.js";
 const { Interval } = require("luxon");
 
@@ -67,7 +67,7 @@ function DayCols(props) {
 function ScheduleGrid(props) {
   return (
     <div className="container" style={{ height: "500px" }}>
-      <DayCols dayNames={dayNames} coursesInDay={coursesInDay} />
+      <DayCols dayNames={DayNames} coursesInDay={CoursesInDay} />
     </div>
   );
 }

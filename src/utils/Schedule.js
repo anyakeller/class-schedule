@@ -1,5 +1,5 @@
-const dayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
-const coursesInDay = {
+const DayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
+const CoursesInDay = {
   Sun: [],
   Mon: [],
   Tues: [],
@@ -9,7 +9,18 @@ const coursesInDay = {
   Sat: []
 };
 
-const courses = {
+const CourseColorPalette = [
+  "8c1c36",
+  "bf5926",
+  "b3881b",
+  "2d803a",
+  "137680",
+  "194480",
+  "75238c",
+  "8c2a72"
+];
+
+const COURSES = {
   "Emerg Mod Europ": {
     code: "CAS HI102",
     crHrs: 4,
@@ -159,8 +170,8 @@ const courses = {
 */
 
 // put sections in coursesInDay
-for (const courseName in courses) {
-  const courseData = { courseName: courseName, ...courses[courseName] };
+for (const courseName in COURSES) {
+  const courseData = { courseName: courseName, ...COURSES[courseName] };
   // console.log(courseData);
   // for each section iterate through section time
   for (const sectionIndex in courseData["sections"]) {
@@ -168,8 +179,8 @@ for (const courseName in courses) {
     for (const sectionDayIndex in sectionData["logistics"]["days"]) {
       const sectionday = sectionData["logistics"]["days"][sectionDayIndex];
       // make sure it doesn't say "Arr" because "Arr" isn't a day
-      if (sectionday in coursesInDay) {
-        coursesInDay[sectionday].push({
+      if (sectionday in CoursesInDay) {
+        CoursesInDay[sectionday].push({
           code: courseData["code"],
           courseName: courseData["courseName"],
           ...sectionData
@@ -179,4 +190,8 @@ for (const courseName in courses) {
   }
 }
 
-export { dayNames, coursesInDay, courses };
+export {
+  DayNames as dayNames,
+  CoursesInDay as coursesInDay,
+  COURSES as courses
+};
