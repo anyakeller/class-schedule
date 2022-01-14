@@ -1,5 +1,8 @@
 import React from "react";
-import { dayNames as DayNames, coursesInDay as CoursesInDay } from "../utils/Schedule.js";
+import {
+  dayNames as DayNames,
+  coursesInDay as CoursesInDay
+} from "../utils/Schedule.js";
 import { convertTime } from "../utils/TimeHandling.js";
 const { Interval } = require("luxon");
 
@@ -18,7 +21,7 @@ function DayTimeBlock(props) {
   const dayStart = startTime.startOf("day").plus({ hours: 7 });
   var timeInterval = Interval.fromDateTimes(startTime, stopTime);
 
-  // how many minutes from 7 am 
+  // how many minutes from 7 am
   var sevenToStartTime = startTime.diff(dayStart, "minutes").as("minutes");
   var minutesLong = stopTime.diff(startTime, "minutes").as("minutes");
 
@@ -31,9 +34,9 @@ function DayTimeBlock(props) {
         width: "100%",
         height: `${blockHeightPercent}%`,
         top: `${blockTopPercent}%`,
+        backgroundColor: `#${props.sectionData.color}`,
         position: "absolute"
-      }}
-      className={"bg-primary"}></div>
+      }}></div>
   );
 }
 
