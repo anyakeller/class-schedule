@@ -170,7 +170,12 @@ const COURSES = {
 */
 
 // put sections in coursesInDay
+var courseIdCounter = 0;
 for (const courseName in COURSES) {
+  COURSES[courseName]["color"] = CourseColorPalette[courseIdCounter]
+    ? CourseColorPalette[courseIdCounter]
+    : "0026ff"; // set course color, if out of aray use this blue 0026ff
+  COURSES[courseName]["courseId"] = courseIdCounter++; // set id number and increment
   const courseData = { courseName: courseName, ...COURSES[courseName] };
   // console.log(courseData);
   // for each section iterate through section time
@@ -179,10 +184,13 @@ for (const courseName in COURSES) {
     for (const sectionDayIndex in sectionData["logistics"]["days"]) {
       const sectionday = sectionData["logistics"]["days"][sectionDayIndex];
       // make sure it doesn't say "Arr" because "Arr" isn't a day
+      // add data about section
       if (sectionday in CoursesInDay) {
         CoursesInDay[sectionday].push({
           code: courseData["code"],
           courseName: courseData["courseName"],
+          courseId: courseData["courseId"],
+          color: courseData["color"],
           ...sectionData
         });
       }
