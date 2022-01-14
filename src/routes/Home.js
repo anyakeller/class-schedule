@@ -35,8 +35,13 @@ function DayTimeBlock(props) {
         height: `${blockHeightPercent}%`,
         top: `${blockTopPercent}%`,
         backgroundColor: `#${props.sectionData.color}`,
-        position: "absolute"
-      }}></div>
+        position: "absolute",
+        fontSize: ".6rem",
+        lineHeight: "1.2em",
+      }}
+      className="text-white">
+      {props.sectionData.courseName}
+    </div>
   );
 }
 
@@ -54,7 +59,7 @@ function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%" }}>
       {[""].concat(props.dayNames).map((day, index) => (
-        <div className="col d-flex flex-column" key={index}>
+        <div className="col d-flex flex-column" style={{ padding: "0px 1px"}} key={index}>
           <h5 style={{ height: "1.5em" }}>{day}</h5>
           <div style={{ flexGrow: "1", position: "relative" }}>
             <DayCol
