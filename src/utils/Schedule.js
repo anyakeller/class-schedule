@@ -1,5 +1,8 @@
-const DayNames = ["Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
+const DayNames = ["BLANK", "Sun", "Mon", "Tues", "Wed", "Thr", "Fri", "Sat"];
+// blank day for grid
+
 const CoursesInDay = {
+  BLANK: [],
   Sun: [],
   Mon: [],
   Tues: [],
@@ -112,6 +115,101 @@ const COURSES = {
         }
       }
     ]
+  },
+  "debugging course": {
+    code: "na",
+    crHrs: 4,
+    instructor: "na",
+    sections: [
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "7:00am",
+          stop: "8:00am",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "9:00am",
+          stop: "10:00am",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "11:00am",
+          stop: "12:00pm",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "1:00pm",
+          stop: "2:00pm",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "3:00pm",
+          stop: "4:00pm",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "5:00pm",
+          stop: "6:00pm",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "7:00pm",
+          stop: "8:00pm",
+          days: ["BLANK"]
+        }
+      },
+      {
+        type: "na",
+        section: "na",
+        logistics: {
+          building: "asdf",
+          room: "asdf",
+          start: "9:00pm",
+          stop: "10:00pm",
+          days: ["BLANK"]
+        }
+      }
+    ]
   }
 };
 
@@ -198,8 +296,5 @@ for (const courseName in COURSES) {
   }
 }
 
-export {
-  DayNames as dayNames,
-  CoursesInDay as coursesInDay,
-  COURSES as courses
-};
+console.log(CoursesInDay);
+export { DayNames, CoursesInDay, COURSES };

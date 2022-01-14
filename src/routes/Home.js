@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  dayNames as DayNames,
-  coursesInDay as CoursesInDay
-} from "../utils/Schedule.js";
+import { DayNames, CoursesInDay } from "../utils/Schedule.js";
 import { convertTime } from "../utils/TimeHandling.js";
 const { Interval } = require("luxon");
 
@@ -37,7 +34,7 @@ function DayTimeBlock(props) {
         backgroundColor: `#${props.sectionData.color}`,
         position: "absolute",
         fontSize: ".6rem",
-        lineHeight: "1.2em",
+        lineHeight: "1.2em"
       }}
       className="text-white">
       {props.sectionData.courseName}
@@ -58,8 +55,11 @@ function DayCol(props) {
 function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%" }}>
-      {[""].concat(props.dayNames).map((day, index) => (
-        <div className="col d-flex flex-column" style={{ padding: "0px 1px"}} key={index}>
+      {[].concat(props.dayNames).map((day, index) => (
+        <div
+          className="col d-flex flex-column"
+          style={{ padding: "0px 1px" }}
+          key={index}>
           <h5 style={{ height: "1.5em" }}>{day}</h5>
           <div style={{ flexGrow: "1", position: "relative" }}>
             <DayCol
