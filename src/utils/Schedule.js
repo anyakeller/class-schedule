@@ -53,7 +53,7 @@ const COURSES = {
         notes: "Mts w/CAS CI266",
         logistics: {
           building: "CAS",
-          room: "223",
+          room: "426",
           start: "2:30pm",
           stop: "3:20pm",
           days: ["Mon", "Wed", "Fri"]
@@ -96,8 +96,8 @@ const COURSES = {
         type: "Lecture",
         section: "A3",
         logistics: {
-          building: "PHO",
-          room: "203",
+          building: "LSE",
+          room: "B03",
           start: "10:10am",
           stop: "11:55am",
           days: ["Mon", "Wed"]

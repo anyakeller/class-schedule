@@ -132,7 +132,7 @@ function Home(props) {
               <td>Italian Film Carter</td>
               <td>Independent</td>
               <td>CAS</td>
-              <td>223</td>
+              <td>426</td>
               <td>Mon,Wed,Fri</td>
               <td> 2:30pm</td>
               <td> 3:20pm</td>
@@ -181,8 +181,8 @@ function Home(props) {
               <td> 4.0</td>
               <td>Prob Stat Data Nagem</td>
               <td>Lecture</td>
-              <td>PHO</td>
-              <td>203</td>
+              <td>LSE</td>
+              <td>B03</td>
               <td>Mon,Wed</td>
               <td>10:10am</td>
               <td>11:55am</td>
