@@ -1,7 +1,7 @@
-import { getTimeBlockPercentages } from "../utils/TimeHandling.js";
+import {  getTimeBlockPercentages } from "../utils/TimeHandling.js";
 
 function DayTimeBlock(props) {
-  const [blockTopPercent, blockHeightPercent] = getTimeBlockPercentages(
+  const {top, height} = getTimeBlockPercentages(
     props.sectionData.logistics.start,
     props.sectionData.logistics.stop
   );
@@ -10,8 +10,8 @@ function DayTimeBlock(props) {
     <div
       style={{
         width: "100%",
-        height: `${blockHeightPercent}%`,
-        top: `${blockTopPercent}%`,
+        top: top,
+        height: height,
         backgroundColor: `#${props.sectionData.color}`,
         position: "absolute",
         fontSize: ".6rem",

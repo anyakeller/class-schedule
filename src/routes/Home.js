@@ -24,9 +24,9 @@ function DayCol(props) {
 function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%", position: "relative" }}>
-      <div style={{ position: "absolute",backgroundColor: "red" }}>
-        <div style={{position: "absolute" }}></div>
-        <div style={{ position: "absolute",backgroundColor: "blue" }}></div>
+      <div style={{ position: "absolute", height: "100%"}}>
+        <div style={{ position: "absolute" }}></div>
+        <div style={{ top: "40%", position: "absolute",backgroundColor: "blue" }}></div>
         <div style={{ position: "absolute" }}></div>
       </div>
       {[].concat(props.dayNames).map((day, index) => (
