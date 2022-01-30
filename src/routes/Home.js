@@ -24,10 +24,27 @@ function DayCol(props) {
 function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%", position: "relative" }}>
-      <div style={{ position: "absolute", height: "100%" }}>
-        <TimeBlock />
-        <TimeBlock style={{ top: "40%", backgroundColor: "blue" }} />
-        <TimeBlock />
+      <div
+        className="d-flex flex-column"
+        style={{ position: "absolute", height: "100%" }}>
+        <h5 style={{ height: "1.5em" }}>qwerqwe</h5>
+        <div style={{ flexGrow: "1", position: "relative" }}>
+          <TimeBlock
+            start="7:00am"
+            stop="8:00am"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="9:00am"
+            stop="10:00am"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock start="10:00am" stop="11:00am">
+            qwerqwe
+          </TimeBlock>
+        </div>
       </div>
       {[].concat(props.dayNames).map((day, index) => (
         <div

@@ -8,10 +8,10 @@ function TimeBlock(props) {
   } else {
     style = { position: "absolute" };
   }
-  if (props.startStr && props.stopStr) {
+  if (props.start && props.stop) {
     let { top, height } = getTimeBlockPercentages(
-      props.sectionData.logistics.start,
-      props.sectionData.logistics.stop
+      props.start,
+      props.stop
     );
     style.top = top;
     style.height = height;
