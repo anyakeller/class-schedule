@@ -1,3 +1,3 @@
-import DayTimeBlock from "./DayTimeBlock";
+import {TimeBlock, DayTimeBlock} from "./DayTimeBlock";
 
-export { DayTimeBlock };
+export {TimeBlock, DayTimeBlock };

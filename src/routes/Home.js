@@ -1,5 +1,5 @@
 import React from "react";
-import { DayTimeBlock } from "../components";
+import { TimeBlock, DayTimeBlock } from "../components";
 import { DayNames, CoursesInDay } from "../utils/Schedule.js";
 
 function Header(props) {
@@ -24,10 +24,10 @@ function DayCol(props) {
 function DayCols(props) {
   return (
     <div className="row" style={{ height: "100%", position: "relative" }}>
-      <div style={{ position: "absolute", height: "100%"}}>
-        <div style={{ position: "absolute" }}></div>
-        <div style={{ top: "40%", position: "absolute",backgroundColor: "blue" }}></div>
-        <div style={{ position: "absolute" }}></div>
+      <div style={{ position: "absolute", height: "100%" }}>
+        <TimeBlock />
+        <TimeBlock style={{ top: "40%", backgroundColor: "blue" }} />
+        <TimeBlock />
       </div>
       {[].concat(props.dayNames).map((day, index) => (
         <div
