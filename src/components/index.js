@@ -1,4 +1,3 @@
-import Header from "./Header";
-import Navbar from "./Navbar";
+import DayTimeBlock from "./DayTimeBlock";
 
-export { Header, Navbar };
+export { DayTimeBlock };
