@@ -2,7 +2,7 @@ import React from "react";
 import { getTimeBlockPercentages } from "../utils/TimeHandling.js";
 
 function TimeBlock(props) {
-  return <div style={props.style}>{props.children}</div>;
+  return <div style={props.style} className={props.className}>{props.children}</div>;
 }
 
 class DayTimeBlock extends React.Component {
@@ -29,9 +29,9 @@ class DayTimeBlock extends React.Component {
   }
   render() {
     return (
-      <div style={this.state.style} className="text-white">
+      <TimeBlock style={this.state.style} className="text-white">
         {this.state.sectionData.courseName}
-      </div>
+      </TimeBlock>
     );
   }
 }
