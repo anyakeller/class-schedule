@@ -27,7 +27,7 @@ function DayCols(props) {
       <div
         className="d-flex flex-column"
         style={{ position: "absolute", height: "100%" }}>
-        <h5 style={{ height: "1.5em" }}>qwerqwe</h5>
+        <h5 style={{ height: "30px" }}></h5>
         <div style={{ flexGrow: "1", position: "relative" }}>
           <TimeBlock
             start="7:00am"
@@ -41,8 +41,41 @@ function DayCols(props) {
             style={{ backgroundColor: "blue" }}>
             asdf
           </TimeBlock>
-          <TimeBlock start="10:00am" stop="11:00am">
-            qwerqwe
+          <TimeBlock
+            start="11:00am"
+            stop="12:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="1:00pm"
+            stop="2:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="3:00pm"
+            stop="4:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="5:00pm"
+            stop="6:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="7:00pm"
+            stop="8:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
+          </TimeBlock>
+          <TimeBlock
+            start="9:00pm"
+            stop="10:00pm"
+            style={{ backgroundColor: "blue" }}>
+            asdf
           </TimeBlock>
         </div>
       </div>
@@ -51,7 +84,7 @@ function DayCols(props) {
           className="col d-flex flex-column"
           style={{ padding: "0px 1px" }}
           key={index}>
-          <h5 style={{ height: "1.5em" }}>{day}</h5>
+          <h5 style={{ height: "30px" }}>{day}</h5>
           <div style={{ flexGrow: "1", position: "relative" }}>
             <DayCol
               dayData={day in props.coursesInDay ? props.coursesInDay[day] : []}
