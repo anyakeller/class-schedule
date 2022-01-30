@@ -1,26 +1,39 @@
-import {  getTimeBlockPercentages } from "../utils/TimeHandling.js";
+import React from "react";
+import { getTimeBlockPercentages } from "../utils/TimeHandling.js";
 
-function DayTimeBlock(props) {
-  const {top, height} = getTimeBlockPercentages(
-    props.sectionData.logistics.start,
-    props.sectionData.logistics.stop
-  );
+function TimeBlock(props) {
+  return <div style={props.style}>{props.children}</div>;
+}
 
-  return (
-    <div
-      style={{
-        width: "100%",
+class DayTimeBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    const { top, height } = getTimeBlockPercentages(
+      props.sectionData.logistics.start,
+      props.sectionData.logistics.stop
+    );
+    this.state = {
+      sectionData: props.sectionData,
+      startStr: props.start,
+      stopStr: props.stop,
+      style: {
+        position: "absolute",
         top: top,
         height: height,
-        backgroundColor: `#${props.sectionData.color}`,
-        position: "absolute",
+        width: "100%",
+        backgroundColor: `#${this.props.sectionData.color}`,
         fontSize: ".6rem",
         lineHeight: "1.2em"
-      }}
-      className="text-white">
-      {props.sectionData.courseName}
-    </div>
-  );
+      }
+    };
+  }
+  render() {
+    return (
+      <div style={this.state.style} className="text-white">
+        {this.state.sectionData.courseName}
+      </div>
+    );
+  }
 }
 
 export default DayTimeBlock;
