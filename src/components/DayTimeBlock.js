@@ -2,9 +2,23 @@ import React from "react";
 import { getTimeBlockPercentages } from "../utils/TimeHandling.js";
 
 function TimeBlock(props) {
-  const style = props.style ? props.style : {};
+  let style;
+  if (props.style) {
+    style = { position: "absolute", ...props.style };
+  } else {
+    style = { position: "absolute" };
+  }
+  if (props.startStr && props.stopStr) {
+    let { top, height } = getTimeBlockPercentages(
+      props.sectionData.logistics.start,
+      props.sectionData.logistics.stop
+    );
+    style.top = top;
+    style.height = height;
+  }
+
   return (
-    <div style={{ position: "absolute", ...style }} className={props.className}>
+    <div style={style} className={props.className}>
       {props.children}
     </div>
   );
@@ -19,8 +33,8 @@ class DayTimeBlock extends React.Component {
     );
     this.state = {
       sectionData: props.sectionData,
-      startStr: props.start,
-      stopStr: props.stop,
+      startStr: props.sectionData.logistics.start,
+      stopStr: props.sectionData.logistics.stop,
       style: {
         top: top,
         height: height,
